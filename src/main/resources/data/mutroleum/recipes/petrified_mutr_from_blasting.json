@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "mutroleum:mutroleum_ore"
+  },
+  "result": "mutroleum:petrified_mutr",
+  "experience": 0.1,
+  "cookingtime": 100
+}

@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "mutroleum",
+  "version": "${version}",
+
+  "name": "Mutroleum",
+  "description": "A mod about a living liquid with symbiotic tendencies.",
+  "authors": [
+    "Nenrys"
+  ],
+  "contact": {
+    "homepage": "",
+    "sources": ""
+  },
+
+  "license": "CC0-1.0",
+  "icon": "assets/mutroleum/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.nenrys.mutroleum.Mutroleum"
+    ],
+    "client": [
+      "com.nenrys.mutroleum.MutroleumClient"
+    ]
+  },
+  "mixins": [
+    ""
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.7.4",
+    "fabric": "*",
+    "minecraft": "1.16.x"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}

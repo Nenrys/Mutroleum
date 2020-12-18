@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "glowing=false": { "model": "mutroleum:block/petrified_mutr_block" },
+    "glowing=true": { "model":  "mutroleum:block/petrified_mutr_block_glowing" }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "mutroleum:petrified_mutr_block"
+    }
+  ],
+  "result": {
+    "item": "mutroleum:petrified_mutr",
+    "count": 9
+  }
+}
