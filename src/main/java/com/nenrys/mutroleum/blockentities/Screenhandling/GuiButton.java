@@ -19,17 +19,23 @@ public class GuiButton extends ButtonWidget {
     private final Identifier texture;
     private final int xtexturestart;
     private final int ytexturestart;
-    private boolean disabled = false;
+    protected boolean disabled = false;
     private final ButtonWidget.PressAction pressedAction;
     private boolean wasPressed = false;
     //private final GuiButton.releaseAction releaseAction;
 
-    public GuiButton(int i, int j, Identifier texture, int xbuttonstart, int ybuttonstart, ButtonWidget.PressAction pressaction) {
-        super(i,j,22,22, new LiteralText("Something what?"), pressaction);
+
+
+    public GuiButton(int i, int j, Identifier texture, int width, int height, int xbuttonstart, int ybuttonstart, ButtonWidget.PressAction pressaction) {
+        super(i,j,width,height, new LiteralText("Something what?"), pressaction);
         this.texture = texture;
         this.xtexturestart = xbuttonstart;
         this.ytexturestart = ybuttonstart;
         this.pressedAction = pressaction;
+    }
+
+    public GuiButton(int i, int j, Identifier texture, int xbuttonstart, int ybuttonstart, ButtonWidget.PressAction pressaction) {
+        this(i,j,texture,22,22,xbuttonstart,ybuttonstart, pressaction);
     }
 
     public void renderButton(MatrixStack matrices, int mouseX, int mouseY, float delta) {
@@ -50,20 +56,30 @@ public class GuiButton extends ButtonWidget {
 
     @Override
     public void onPress() {
-        this.disabled = true;
         super.onPress();
     }
 
+    //for some reason it does not work.
     @Override
     public void onRelease(double mouseX, double mouseY) {
         MinecraftClient.getInstance().player.sendChatMessage("Testing");
+        System.out.println("testing");
         this.disabled = false;
-        super.onRelease(mouseX, mouseY);
+        //super.onRelease(mouseX, mouseY);
     }
 
     @Environment(EnvType.CLIENT)
     public interface releaseAction {
         void onRelease();
+    }
+
+    public boolean mouseReleased(double mouseX, double mouseY, int button) {
+        if (this.isValidClickButton(button)) {
+            System.out.println("is it working?");
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 
