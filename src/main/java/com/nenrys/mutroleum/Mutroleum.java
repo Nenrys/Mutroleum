@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 public class Mutroleum
 {
     public static final String MOD_ID = "mutroleum";
-    // Directly reference a slf4j logger
+    // Directly reference a slf4j loggeradsf
     private static final Logger LOGGER = LogUtils.getLogger();
 
     public Mutroleum()
