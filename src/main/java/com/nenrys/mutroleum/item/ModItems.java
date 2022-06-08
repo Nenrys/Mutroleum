@@ -2,7 +2,6 @@ package com.nenrys.mutroleum.item;
 
 import com.nenrys.mutroleum.Mutroleum;
 import com.nenrys.mutroleum.misc.ModCreativeModeTab;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
