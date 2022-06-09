@@ -20,5 +20,4 @@ public class SpeciesItem extends Item {
         }
         return super.use(level, player, p_41434_);
     }
-
 }
