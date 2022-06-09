@@ -3,19 +3,30 @@ package com.nenrys.mutroleum.item;
 import com.nenrys.mutroleum.Mutroleum;
 import com.nenrys.mutroleum.misc.ModCreativeModeTab;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import org.jetbrains.annotations.Nullable;
 
 public class ModItems {
 
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, Mutroleum.MOD_ID);
 
+    //placeholder condition for longer burn time
     public static final RegistryObject<Item> P_MUTROLEUM = ITEMS.register("p_mutroleum",
-            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.MUTROLEUM_TAB)));
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.MUTROLEUM_TAB)){
+                @Override
+                public int getBurnTime(ItemStack itemStack, @Nullable RecipeType<?> recipeType) {
+                    return itemStack.getCount() < 5 ? 800 : 3200;
+                }
+            }
+
+    );
 
     public static final RegistryObject<Item> SPECIES_ITEM = ITEMS.register("species_item",
             () -> new SpeciesItem(new Item.Properties().tab(ModCreativeModeTab.MUTROLEUM_TAB)));
