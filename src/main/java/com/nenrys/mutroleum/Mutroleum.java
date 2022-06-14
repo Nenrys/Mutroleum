@@ -41,18 +41,9 @@ public class Mutroleum
         ModFluids.register(eventBus);
 
         eventBus.addListener(this::setup);
-        eventBus.addListener(this::clientSetup);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
-    }
-
-    private void clientSetup(final FMLClientSetupEvent event) {
-
-        ItemBlockRenderTypes.setRenderLayer(ModFluids.DEAD_MUTROLEUM_BLOCK.get(), RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(ModFluids.DEAD_MUTROLEUM_FLUID.get(), RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(ModFluids.DEAD_MUTROLEUM_FLOWING.get(), RenderType.translucent());
-
     }
 
     private void setup(final FMLCommonSetupEvent event)

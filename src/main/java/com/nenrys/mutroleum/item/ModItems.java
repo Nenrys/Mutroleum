@@ -34,7 +34,7 @@ public class ModItems {
             () -> new SpeciesItem(new Item.Properties().tab(ModCreativeModeTab.MUTROLEUM_TAB)));
 
     public static final RegistryObject<Item> MUTROLIC_FRUIT = ITEMS.register("mutrolic_fruit",
-            () -> new MutrolicFoodItem(new Item.Properties().tab(ModCreativeModeTab.MUTROLEUM_TAB).food(ModFoods.FRUIT_NON_CARRIER), ModFoods.FRUIT_CARRIER));
+            () -> new MutrolicFoodItem(new Item.Properties().tab(ModCreativeModeTab.MUTROLEUM_TAB).food(MutrolicFoodItem.FRUIT_NON_CARRIER), MutrolicFoodItem.FRUIT_CARRIER));
 
     public static final RegistryObject<Item> DEAD_MUTROLEUM_BUCKET = ITEMS.register("dead_mutroleum_bucket",
             () -> new BucketItem(ModFluids.DEAD_MUTROLEUM_FLUID, new Item.Properties().tab(ModCreativeModeTab.MUTROLEUM_TAB).stacksTo(1)));
