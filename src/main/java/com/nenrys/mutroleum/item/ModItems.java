@@ -8,7 +8,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -30,8 +29,8 @@ public class ModItems {
 
     );
 
-    public static final RegistryObject<Item> SPECIES_ITEM = ITEMS.register("species_item",
-            () -> new SpeciesItem(new Item.Properties().tab(ModCreativeModeTab.MUTROLEUM_TAB)));
+    public static final RegistryObject<Item> SPECIES_DEBUGGER = ITEMS.register("species_debugger",
+            () -> new SpeciesDebugItem(new Item.Properties().tab(ModCreativeModeTab.MUTROLEUM_TAB).stacksTo(1)));
 
     public static final RegistryObject<Item> MUTROLIC_FRUIT = ITEMS.register("mutrolic_fruit",
             () -> new MutrolicFoodItem(new Item.Properties().tab(ModCreativeModeTab.MUTROLEUM_TAB).food(MutrolicFoodItem.FRUIT_NON_CARRIER), MutrolicFoodItem.FRUIT_CARRIER));
