@@ -38,7 +38,7 @@ public class Mutroleum
         ModItems.register(eventBus);
         ModBlocks.register(eventBus);
 
-        ModFluids.register(eventBus);
+        //ModFluids.register(eventBus);
 
         eventBus.addListener(this::setup);
 

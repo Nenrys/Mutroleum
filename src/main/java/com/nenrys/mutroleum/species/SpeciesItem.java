@@ -5,14 +5,10 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
 
-public class SpeciesItem extends Item implements IHasSpecies{
+public abstract class SpeciesItem extends Item{
 
     public SpeciesItem(Properties pProperties) {
         super(pProperties);
-    }
-
-    public String getSpeciesName(ItemStack stack) {
-        return stack.getTag().getString("name");
     }
 
     @Override
@@ -23,39 +19,51 @@ public class SpeciesItem extends Item implements IHasSpecies{
         return stack;
     }
 
-    @Override
-    public void setSpeciesName(@Nullable ItemStack stack, String name) {
+    public void setSpecies(ItemStack stack, Species species) {
+        setSpeciesName(stack, species.getName());
+
+        for (Species.GENES genes : Species.GENES.values()) {
+            setGene(stack, genes, species.getGene(genes));
+        }
+
+        for (Species.ATTRIBUTES atr : Species.ATTRIBUTES.values()) {
+            setAttribute(stack, atr, species.getAttribute(atr));
+        }
+
+    }
+
+    private void setSpeciesName(ItemStack stack, String name) {
         stack.getOrCreateTag().putString("name", name);
     }
 
-    public Species.GENE getGene(ItemStack stack, String chrom, String gene) {
-
-        String atcg = stack.getTag().getString(gene);
-
-        for (Species.GENE g : Species.GENE.values()) {
-            if (g.toString().equals(atcg)){
-                return g;
-            }
-        }
-        return Species.GENE.N;
-    }
-
-    public void setGene(ItemStack stack, String chrom, String gene,  Species.GENE atcg) {
+    public void setGene(ItemStack stack, Species.GENES genes, Species.GENE gene) {
         CompoundTag tag = stack.getTag();
 
-        tag.putString(gene, atcg.toString());
+        tag.putInt(genes.toString(), gene.ordinal());
 
         stack.setTag(tag);
     }
 
-    public void setSpecies(ItemStack stack, Species species) {
-        setSpeciesName(stack, species.getName());
+    public void setAttribute(ItemStack stack, Species.ATTRIBUTES atr, int valofatr) {
+        CompoundTag tag = stack.getTag();
 
-        for (Species.G_GENES genes : Species.G_GENES.values()) {
-            setGene(stack, "genesis",genes.toString() ,species.getGene("genesis", genes.toString()));
-        }
+        tag.putInt(atr.toString(), valofatr);
 
-
+        stack.setTag(tag);
     }
 
+    public int getAttribute(ItemStack stack, Species.ATTRIBUTES atr) {
+        return stack.getTag().getInt(atr.toString());
+    }
+
+    public Species.GENE getGene(ItemStack stack, Species.GENES genes) {
+
+        int gene = stack.getTag().getInt(genes.toString());
+
+        return Species.GENE.values()[gene];
+    }
+
+    public String getSpeciesName(ItemStack stack) {
+        return stack.getTag().getString("name");
+    }
 }
