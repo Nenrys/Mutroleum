@@ -1,12 +1,16 @@
 package com.nenrys.mutroleum.block;
 
 import com.nenrys.mutroleum.Mutroleum;
+import com.nenrys.mutroleum.fluid.DMBlock;
+import com.nenrys.mutroleum.fluid.ModFluids;
 import com.nenrys.mutroleum.item.ModItems;
 import com.nenrys.mutroleum.misc.ModCreativeModeTab;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -32,8 +36,6 @@ public class ModBlocks {
 	public static final RegistryObject<Block> MUTROLEUM_ORE = registerBlock("mutroleum_ore", 
 		    () -> new Block(BlockBehaviour.Properties.of(Material.STONE)), ModCreativeModeTab.MUTROLEUM_TAB);
 
-
-
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block,
                                                                      CreativeModeTab tab) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
@@ -46,6 +48,9 @@ public class ModBlocks {
         return ModItems.ITEMS.register(name, () -> new BlockItem(block.get(),
                 new Item.Properties().tab(tab)));
     }
+
+    public static final RegistryObject<LiquidBlock> DM_BLOCK = BLOCKS.register("dm_block",
+            () -> new DMBlock(ModFluids.SOURCE_DM, BlockBehaviour.Properties.copy(Blocks.WATER)));
 
 
 

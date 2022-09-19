@@ -18,7 +18,6 @@ public class SpeciesColor {
     private static final int[] colors3 = {0x3c44a9,0x3ab3da,0x169c9d,0x5d7c15}; //Blue, light blue, cyan, green
     private static final int [] colors4 = {0x80c71f,0xffd83d,0xf9801d,0x825432}; //Lime, yellow, orange, brown
 
-
     //@Mod.EventBusSubscriber(value = Dist.CLIENT, modid = Mutroleum.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
     private static class ColorRegisterHandler
     {

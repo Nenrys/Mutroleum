@@ -2,6 +2,7 @@ package com.nenrys.mutroleum;
 
 import com.mojang.logging.LogUtils;
 import com.nenrys.mutroleum.block.ModBlocks;
+import com.nenrys.mutroleum.fluid.ModFluidTypes;
 import com.nenrys.mutroleum.fluid.ModFluids;
 import com.nenrys.mutroleum.item.ModItems;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
@@ -38,7 +39,8 @@ public class Mutroleum
         ModItems.register(eventBus);
         ModBlocks.register(eventBus);
 
-        //ModFluids.register(eventBus);
+        ModFluids.register(eventBus);
+        ModFluidTypes.register(eventBus);
 
         eventBus.addListener(this::setup);
 
@@ -51,6 +53,15 @@ public class Mutroleum
         // some preinit code
         LOGGER.info("HELLO FROM PREINIT");
         //LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
+    }
+
+    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+    public static class ClientModEvents {
+        @SubscribeEvent
+        public static void onClientSetup(FMLClientSetupEvent event) {
+            ItemBlockRenderTypes.setRenderLayer(ModFluids.SOURCE_DM.get(), RenderType.translucent());
+            ItemBlockRenderTypes.setRenderLayer(ModFluids.FLOWING_DM.get(), RenderType.translucent());
+        }
     }
 
 }

@@ -1,12 +1,12 @@
-package com.nenrys.mutroleum.species;
+package com.nenrys.mutroleum.fluid;
 
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.level.material.Fluid;
 
 import java.util.function.Supplier;
 
-public class dMBucket extends BucketItem {
-    public dMBucket(Supplier<? extends Fluid> supplier, Properties builder) {
+public class DMBUCKET extends BucketItem {
+    public DMBUCKET(Supplier<? extends Fluid> supplier, Properties builder) {
         super(supplier, builder);
     }
 }
