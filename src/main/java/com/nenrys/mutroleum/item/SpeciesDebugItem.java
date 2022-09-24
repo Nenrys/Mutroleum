@@ -66,10 +66,4 @@ public class SpeciesDebugItem extends SpeciesItem {
         return s1;
     }
 
-    public void fillItemCategory(CreativeModeTab pGroup, NonNullList<ItemStack> pItems) {
-        if (this.allowedIn(pGroup)) {
-            pItems.add(this.getDefaultInstance());
-        }
-    }
-
 }

@@ -12,16 +12,19 @@ import java.util.function.Supplier;
 
 public class DMBlock extends LiquidBlock {
 
-    public static final IntegerProperty COLOR = IntegerProperty.create("color", 0, 15);
+    //public static final IntegerProperty COLOR = IntegerProperty.create("color", 0, 15);
 
     public DMBlock(Supplier<? extends FlowingFluid> pFluid, Properties pProperties) {
         super(pFluid, pProperties);
-        this.registerDefaultState(this.getStateDefinition().any().setValue(COLOR, OrganismColor.PURPLE.ordinal()));
+        //this.registerDefaultState(this.getStateDefinition().any().setValue(COLOR, OrganismColor.PURPLE.ordinal()));
     }
 
+    /*
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
         super.createBlockStateDefinition(pBuilder);
         pBuilder.add(COLOR);
     }
+
+     */
 }

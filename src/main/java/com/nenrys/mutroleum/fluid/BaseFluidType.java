@@ -12,6 +12,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraftforge.client.extensions.common.IClientFluidTypeExtensions;
+import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidType;
 import org.jetbrains.annotations.NotNull;
 
@@ -77,16 +78,12 @@ public class BaseFluidType extends FluidType {
 
             @Override
             public int getTintColor() {
-                return 0xFFF25A43;
+                return tintColor;
             }
 
             @Override
             public int getTintColor(FluidState state, BlockAndTintGetter getter, BlockPos pos) {
-
-                int color = getter.getBlockState(pos).getValue(DMBlock.COLOR);
-
-
-                return 0xFF000000+OrganismColor.values()[color].hexcol;
+                return getTintColor();
             }
 
             @Override

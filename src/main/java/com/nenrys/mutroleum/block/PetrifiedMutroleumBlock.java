@@ -2,12 +2,24 @@ package com.nenrys.mutroleum.block;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.stats.Stats;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.material.Material;
+
+import javax.annotation.Nullable;
 
 public class PetrifiedMutroleumBlock extends Block {
 
@@ -38,6 +50,25 @@ public class PetrifiedMutroleumBlock extends Block {
             }
         }
 
+    }
+
+    @Override
+    public void playerDestroy(Level pLevel, Player pPlayer, BlockPos pPos, BlockState pState, @Nullable BlockEntity pBlockEntity, ItemStack pTool) {
+        super.playerDestroy(pLevel, pPlayer, pPos, pState, pBlockEntity, pTool);
+        if (EnchantmentHelper.getItemEnchantmentLevel(Enchantments.SILK_TOUCH, pTool) == 0) {
+            if (pLevel.dimensionType().ultraWarm()) {
+                pLevel.removeBlock(pPos, false);
+                return;
+            }
+
+            Material material = pLevel.getBlockState(pPos.below()).getMaterial();
+            if (pState.getValue(HEATED)){
+                if (material.blocksMotion() || material.isLiquid()) {
+                    pLevel.setBlockAndUpdate(pPos, ModBlocks.DM_BLOCK_PURPLE.get().defaultBlockState());
+                }
+            }
+
+        }
     }
 }
 
