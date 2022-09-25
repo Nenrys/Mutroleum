@@ -19,12 +19,6 @@ public class DMBlock extends LiquidBlock {
         //this.registerDefaultState(this.getStateDefinition().any().setValue(COLOR, OrganismColor.PURPLE.ordinal()));
     }
 
-    /*
-    @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
-        super.createBlockStateDefinition(pBuilder);
-        pBuilder.add(COLOR);
-    }
 
-     */
+
 }

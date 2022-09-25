@@ -2,6 +2,7 @@
   "parent": "item/generated",
   "textures": {
     "layer0": "mutroleum:item/species_debugger",
-    "layer1": "mutroleum:item/species_debugger_detail"
+    "layer1": "mutroleum:item/species_debugger_detail",
+    "layer2": "mutroleum:item/species_debugger_overlay"
   }
 }

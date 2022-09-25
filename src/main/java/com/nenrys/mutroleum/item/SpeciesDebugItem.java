@@ -1,17 +1,16 @@
 package com.nenrys.mutroleum.item;
 
-import com.nenrys.mutroleum.Mutroleum;
+import com.nenrys.mutroleum.species.ISpeciesItem;
 import com.nenrys.mutroleum.species.SpeciesItem;
 import com.nenrys.mutroleum.species.Species;
-import net.minecraft.core.NonNullList;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -24,7 +23,7 @@ public class SpeciesDebugItem extends SpeciesItem {
 
 
     @Override
-    public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
+    public InteractionResultHolder<ItemStack> use(Level pLevel, @NotNull Player pPlayer, InteractionHand pUsedHand) {
         ItemStack itemstack = pPlayer.getItemInHand(pUsedHand);
 
         //IHasSpecies species = (IHasSpecies) itemstack.getItem();
@@ -38,7 +37,7 @@ public class SpeciesDebugItem extends SpeciesItem {
     }
 
     @Override
-    public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+    public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
        if (pStack.hasTag()) {
            String name = getSpeciesName(pStack);
            String genes = getGenesString(pStack);
@@ -53,7 +52,7 @@ public class SpeciesDebugItem extends SpeciesItem {
     private String getGenesString(ItemStack pStack) {
         String s1 = "_";
         for (Species.GENES genes : Species.GENES.values()) {
-            s1 += getGene(pStack, genes).toString();
+            s1 += ISpeciesItem.getGene(pStack, genes).toString();
         }
         return s1;
     }

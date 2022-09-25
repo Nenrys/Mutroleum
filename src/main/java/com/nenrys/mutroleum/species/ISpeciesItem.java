@@ -1,13 +1,12 @@
 package com.nenrys.mutroleum.species;
 
-import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
+import org.jetbrains.annotations.NotNull;
 
 public interface ISpeciesItem {
 
-    default void setSpeciesName(ItemStack stack, String name) {
+    default void setSpeciesName(@NotNull ItemStack stack, String name) {
         stack.getOrCreateTag().putString("name", name);
     }
 
@@ -23,7 +22,7 @@ public interface ISpeciesItem {
         return stack.getTag().getString("name");
     }
 
-    default Species.GENE getGene(ItemStack stack, Species.GENES genes) {
+    static Species.GENE getGene(ItemStack stack, Species.GENES genes) {
 
         int gene = stack.getTag().getInt(genes.toString());
 
