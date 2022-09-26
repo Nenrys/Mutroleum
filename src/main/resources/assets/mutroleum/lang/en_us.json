@@ -29,5 +29,6 @@
   "block.mutroleum.mutroleum_ore_deepslate": "Petrified Mutroleum Ore",
   "block.mutroleum.mutroleum_ore": "Petrified Mutroleum Ore",
 
-  "itemGroup.mutroleumtab": "Mutroleum"
+  "itemGroup.mutroleumtab": "Mutroleum",
+  "effect.mutroleum.mutroleum_taint": "Mutroleum Taint"
 }

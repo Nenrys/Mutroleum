@@ -23,9 +23,4 @@ public class ModEventClientBusEvent {
 
     }
 
-    private static void clientRegisterFluids() {
-        for (RegistryObject<Fluid> fluidreg : ModFluids.FLUIDS.getEntries()) {
-            ItemBlockRenderTypes.setRenderLayer(fluidreg.get(), RenderType.translucent());
-        }
-    }
 }

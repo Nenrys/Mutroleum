@@ -2,6 +2,7 @@ package com.nenrys.mutroleum;
 
 import com.mojang.logging.LogUtils;
 import com.nenrys.mutroleum.block.ModBlocks;
+import com.nenrys.mutroleum.effects.MutroleumEffects;
 import com.nenrys.mutroleum.fluid.ModFluidTypes;
 import com.nenrys.mutroleum.fluid.ModFluids;
 import com.nenrys.mutroleum.item.ModItems;
@@ -42,6 +43,8 @@ public class Mutroleum
 
         ModFluids.register(eventBus);
         ModFluidTypes.register(eventBus);
+
+        MutroleumEffects.register(eventBus);
 
         eventBus.addListener(this::setup);
 
