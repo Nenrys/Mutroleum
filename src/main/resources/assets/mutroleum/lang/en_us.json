@@ -30,5 +30,6 @@
   "block.mutroleum.mutroleum_ore": "Petrified Mutroleum Ore",
 
   "itemGroup.mutroleumtab": "Mutroleum",
-  "effect.mutroleum.mutroleum_taint": "Mutroleum Taint"
+  "effect.mutroleum.mutroleum_taint": "Mutroleum Taint",
+  "death.attack.mutroleum_source": "%1$s died from mutroleum"
 }
