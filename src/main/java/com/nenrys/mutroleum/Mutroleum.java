@@ -6,6 +6,8 @@ import com.nenrys.mutroleum.effects.MutroleumEffects;
 import com.nenrys.mutroleum.fluid.ModFluidTypes;
 import com.nenrys.mutroleum.fluid.ModFluids;
 import com.nenrys.mutroleum.item.ModItems;
+import com.nenrys.mutroleum.world.feature.ModConfiguredFeatures;
+import com.nenrys.mutroleum.world.feature.ModPlacedFeatures;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.level.block.Block;
@@ -45,6 +47,9 @@ public class Mutroleum
         ModFluidTypes.register(eventBus);
 
         MutroleumEffects.register(eventBus);
+
+        ModConfiguredFeatures.register(eventBus);
+        ModPlacedFeatures.register(eventBus);
 
         eventBus.addListener(this::setup);
 
